@@ -1,12 +1,10 @@
 /**
  * Index Page
  * 
- * Main landing page assembling all sections.
- * Each section is modular and can be reordered or removed as needed.
+ * Main landing page matching the reference design.
  */
 
-import TopHeader from "@/components/headers/TopHeader";
-import NavHeader from "@/components/headers/NavHeader";
+import MainHeader from "@/components/headers/MainHeader";
 import HeroSection from "@/sections/HeroSection";
 import CarouselSection from "@/sections/CarouselSection";
 import ProductsSection from "@/sections/ProductsSection";
@@ -16,10 +14,9 @@ import FooterSection from "@/sections/FooterSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Headers */}
-      <TopHeader />
-      <NavHeader />
+    <div className="min-h-screen bg-background font-body">
+      {/* Header */}
+      <MainHeader />
 
       {/* Main Content */}
       <main>

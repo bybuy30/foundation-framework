@@ -1,9 +1,5 @@
 /**
- * ProductCard Component
- * 
- * Displays individual product with toggle between retail and B2B pricing.
- * - Green state: Retail price (default)
- * - Red state: B2B price (on click)
+ * ProductCard Component - Updated for green theme
  */
 
 import { useState } from "react";
@@ -22,8 +18,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <div
-      className={`group relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${
-        showB2B ? "card-b2b glow-secondary" : "card-retail glow-primary"
+      className={`group relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 border-2 ${
+        showB2B 
+          ? "border-orange-500/50 bg-orange-500/5" 
+          : "border-primary/50 bg-primary/5"
       }`}
       onClick={togglePricing}
       role="button"
@@ -48,7 +46,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
             <p className={`text-xs uppercase tracking-wider ${
-              showB2B ? "text-secondary" : "text-primary"
+              showB2B ? "text-orange-500" : "text-primary"
             }`}>
               {showB2B ? "B2B Price" : "Retail Price"}
             </p>
@@ -59,7 +57,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           
           {/* Toggle Indicator */}
           <div className={`w-3 h-3 rounded-full ${
-            showB2B ? "bg-secondary" : "bg-primary"
+            showB2B ? "bg-orange-500" : "bg-primary"
           }`} />
         </div>
 

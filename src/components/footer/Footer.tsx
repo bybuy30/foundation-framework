@@ -1,10 +1,8 @@
 /**
- * Footer Component
- * 
- * Site-wide footer with company info, links, and social media.
+ * Footer Component - Updated for forest green theme
  */
 
-import { Leaf, Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { footerLinks, socialLinks } from "@/data/navigation";
 
 const Footer = () => {
@@ -16,9 +14,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div className="space-y-4">
-            <a href="#hero" className="flex items-center gap-2">
-              <Leaf className="w-8 h-8 text-primary" />
-              <span className="text-xl font-bold tracking-tight">HYDRONEST</span>
+            <a href="#hero" className="font-script text-2xl">
+              Hydronest
             </a>
             <p className="text-sm text-muted-foreground">
               Premium hydroponic produce and live plants. Fresh, sustainable, and delivered to your door.
@@ -33,7 +30,7 @@ const Footer = () => {
                 <li key={link.id}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.label}
                   </a>
