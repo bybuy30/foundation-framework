@@ -1,7 +1,5 @@
 /**
- * Navigation Configuration
- * 
- * Centralized navigation links for headers and footer.
+ * Navigation Configuration - Updated for new design
  */
 
 export interface NavLink {
@@ -13,9 +11,15 @@ export interface NavLink {
 
 export const mainNavLinks: NavLink[] = [
   { id: "home", label: "Home", href: "#hero" },
-  { id: "products", label: "Products", href: "#products" },
-  { id: "b2b", label: "B2B Partners", href: "#b2b" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "about", label: "About Us", href: "#about" },
+  { id: "subscription", label: "Subscription", href: "#subscription" },
+  { id: "recipes", label: "Recipes", href: "#recipes" },
+];
+
+export const heroButtons: NavLink[] = [
+  { id: "produce", label: "Produce", href: "#products" },
+  { id: "b2b", label: "B2B Ties", href: "#b2b" },
+  { id: "contact", label: "Contact Us", href: "#contact" },
 ];
 
 export const footerLinks: NavLink[] = [

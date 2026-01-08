@@ -1,7 +1,5 @@
 /**
- * B2BTiesSection Component
- * 
- * Section showcasing B2B partner brands with infinite scroll.
+ * B2BTiesSection Component - Updated styling
  */
 
 import BrandScroller from "@/components/b2b/BrandScroller";
@@ -37,7 +35,7 @@ const B2BTiesSection = () => {
               B2B Partnerships
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-script text-3xl md:text-4xl mb-4">
             Trusted by Industry Leaders
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">

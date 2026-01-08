@@ -1,7 +1,5 @@
 /**
- * ContactSection Component
- * 
- * Section wrapper for the contact form with additional info.
+ * ContactSection Component - Updated styling
  */
 
 import ContactForm from "@/components/contact/ContactForm";
@@ -41,7 +39,7 @@ const ContactSection = () => {
           <span className="text-sm text-primary font-medium uppercase tracking-wider">
             Get In Touch
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          <h2 className="font-script text-3xl md:text-4xl mt-2 mb-4">
             Contact Us
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
