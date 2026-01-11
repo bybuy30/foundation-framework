@@ -1,8 +1,7 @@
 /**
  * ImageCarousel Component
- * 
- * Displays a carousel of images from the carousel data file.
- * Images can be replaced by updating src/data/carousel.ts
+ * * Displays a carousel of images with a fixed aspect ratio.
+ * Scaled down from full-screen to a centered, proportional container.
  */
 
 import { useState, useEffect, useCallback } from "react";
@@ -38,61 +37,63 @@ const ImageCarousel = () => {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <div 
-      className="relative w-full h-screen overflow-hidden rounded-lg bg-muted"
-      onMouseEnter={() => setIsAutoPlaying(false)}
-      onMouseLeave={() => setIsAutoPlaying(true)}
-    >
-      {/* Images */}
+    <div className="w-full px-4 py-8"> {/* Container to provide outer spacing */}
       <div 
-        className="flex transition-transform duration-500 ease-out h-full"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        className="relative max-w-5xl mx-auto aspect-video overflow-hidden rounded-xl bg-muted shadow-xl"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        {carouselImages.map((image) => (
-          <div key={image.id} className="w-full h-full flex-shrink-0">
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover"
+        {/* Images Wrapper */}
+        <div 
+          className="flex transition-transform duration-500 ease-out h-full"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {carouselImages.map((image) => (
+            <div key={image.id} className="w-full h-full flex-shrink-0">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/50 hover:bg-background/80 backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 md:opacity-100"
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/50 hover:bg-background/80 backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 md:opacity-100"
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </Button>
+
+        {/* Dots Indicator */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/20 backdrop-blur-sm">
+          {carouselImages.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentIndex 
+                  ? "bg-white w-4" 
+                  : "bg-white/50 hover:bg-white/80"
+              }`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
             />
-          </div>
-        ))}
-      </div>
-
-      {/* Navigation Arrows */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/50 hover:bg-background/80"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </Button>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/50 hover:bg-background/80"
-        onClick={nextSlide}
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </Button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
-        {carouselImages.map((_, index) => (
-          <button
-            key={index}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${
-              index === currentIndex 
-                ? "bg-primary" 
-                : "bg-foreground/30 hover:bg-foreground/50"
-            }`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
