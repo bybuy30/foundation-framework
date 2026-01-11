@@ -3,6 +3,7 @@
  * 
  * Displays products in a responsive grid layout.
  * Handles filtering and displays ProductCard components.
+ * Grid layout: 5 products per row
  */
 
 import { useState, useMemo } from "react";
@@ -31,8 +32,8 @@ const ProductGrid = () => {
         </p>
       </div>
 
-      {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      {/* Product Grid - 5 products per row */}
+      <div className="grid grid-cols-5 gap-4">
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

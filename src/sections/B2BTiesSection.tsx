@@ -7,21 +7,6 @@ import { Handshake, TrendingUp, Truck, Award } from "lucide-react";
 
 const B2BTiesSection = () => {
   const benefits = [
-    {
-      icon: TrendingUp,
-      title: "Volume Pricing",
-      description: "Competitive wholesale rates for bulk orders",
-    },
-    {
-      icon: Truck,
-      title: "Reliable Delivery",
-      description: "Consistent supply chain to your business",
-    },
-    {
-      icon: Award,
-      title: "Premium Quality",
-      description: "Farm-fresh products every time",
-    },
   ];
 
   return (

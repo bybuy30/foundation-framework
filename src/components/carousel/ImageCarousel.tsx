@@ -39,7 +39,7 @@ const ImageCarousel = () => {
 
   return (
     <div 
-      className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-lg bg-muted"
+      className="relative w-full h-screen overflow-hidden rounded-lg bg-muted"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >

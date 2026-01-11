@@ -13,9 +13,6 @@ const ProductsSection = () => {
           <span className="text-sm text-primary font-medium uppercase tracking-wider">
             Our Products
           </span>
-          <h2 className="font-script text-3xl md:text-4xl mt-2 mb-4">
-            Fresh From the Farm
-          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Browse our selection of premium hydroponic produce and live plants. 
             Click any product to see B2B wholesale pricing.

@@ -1,78 +1,82 @@
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+
 /**
- * ProductCard Component - Updated for green theme
+ * ProductCard Component
+ * - Image Container: Fixed aspect ratio matching 299x300
+ * - Content Container: Fixed height 125px
+ * - Interaction: Entire lower section turns red (#CF3C2C) on click
  */
-
-import { useState } from "react";
-import { type Product } from "@/data/products";
-
-interface ProductCardProps {
-  product: Product;
-}
-
-const ProductCard = ({ product }: ProductCardProps) => {
-  const [showB2B, setShowB2B] = useState(false);
-
-  const togglePricing = () => {
-    setShowB2B((prev) => !prev);
-  };
+const ProductCard = ({ name = "Baby Corn", weight = "200 g", price = "50" }) => {
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
-    <div
-      className={`group relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 border-2 ${
-        showB2B 
-          ? "border-orange-500/50 bg-orange-500/5" 
-          : "border-primary/50 bg-primary/5"
-      }`}
-      onClick={togglePricing}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && togglePricing()}
-      aria-label={`${product.name} - Click to toggle pricing`}
+    <div 
+      onClick={() => setIsSelected(!isSelected)}
+      className="cursor-pointer select-none flex flex-col w-full"
     >
-      {/* Product Image */}
-      <div className="aspect-square overflow-hidden bg-muted">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+      {/* Product Image Section: Maintaining 299x300 proportion */}
+      <div 
+        className="bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center"
+        style={{ aspectRatio: "299 / 300" }}
+      >
+        {/* Placeholder for actual product image */}
+        <div className="w-full h-full bg-gradient-to-b from-gray-200 to-gray-300" />
       </div>
 
-      {/* Product Info */}
-      <div className="p-4 space-y-2">
-        <h3 className="font-semibold text-sm line-clamp-1">{product.name}</h3>
-        
-        {/* Pricing Display */}
-        <div className="flex items-center justify-between">
-          <div className="space-y-0.5">
-            <p className={`text-xs uppercase tracking-wider ${
-              showB2B ? "text-orange-500" : "text-primary"
-            }`}>
-              {showB2B ? "B2B Price" : "Retail Price"}
-            </p>
-            <p className="text-lg font-bold">
-              ${showB2B ? product.b2bPrice.toFixed(2) : product.retailPrice.toFixed(2)}
-            </p>
+      {/* Content Section: 125px height */}
+      <div 
+        className={cn(
+          "p-4 text-white flex flex-col justify-between transition-colors duration-300 ease-in-out",
+          isSelected ? "bg-[#CF3C2C]" : "bg-[#657a55]"
+        )}
+        style={{ height: "125px" }}
+      >
+        {/* Top Row: Title and Net Wt Label */}
+        <div className="flex justify-between items-start gap-2">
+          <h2 className="text-2xl font-medium leading-tight tracking-tight">
+            {name}
+          </h2>
+          <div className="text-right leading-none shrink-0 pt-1">
+            <p className="text-[10px] opacity-90 uppercase tracking-tighter">net wt.</p>
+            <p className="text-xl font-bold">{weight}</p>
           </div>
-          
-          {/* Toggle Indicator */}
-          <div className={`w-3 h-3 rounded-full ${
-            showB2B ? "bg-orange-500" : "bg-primary"
-          }`} />
         </div>
 
-        {/* Stock Status */}
-        {!product.inStock && (
-          <p className="text-xs text-muted-foreground">Out of Stock</p>
-        )}
-      </div>
-
-      {/* Click hint */}
-      <div className="absolute top-2 right-2 px-2 py-1 rounded text-xs bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity">
-        Click to toggle
+        {/* Bottom Row: Price */}
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-light">₹</span>
+          <span className="text-5xl font-bold leading-none">{price}</span>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+/**
+ * ProductGrid Component
+ * - Layout: Exactly 5 products per row with clean gaps
+ */
+const ProductGrid = () => {
+  const products = Array(10).fill(null); // Example with 2 rows of 5
+
+  return (
+    <div className="p-10 bg-white min-h-screen">
+      {/* Max-width container prevents cards from becoming too wide on large screens */}
+      <div className="max-w-[1500px] mx-auto">
+        <div className="grid grid-cols-5 gap-4 md:gap-6">
+          {products.map((_, index) => (
+            <ProductCard 
+              key={index} 
+              name="Baby Corn" 
+              weight="200 g" 
+              price="50" 
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductGrid;

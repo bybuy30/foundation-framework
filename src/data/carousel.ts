@@ -12,11 +12,10 @@ export interface CarouselImage {
 }
 
 export const carouselImages: CarouselImage[] = [
-  { id: "1", src: "/placeholder.svg", alt: "Carousel image 1" },
-  { id: "2", src: "/placeholder.svg", alt: "Carousel image 2" },
-  { id: "3", src: "/placeholder.svg", alt: "Carousel image 3" },
-  { id: "4", src: "/placeholder.svg", alt: "Carousel image 4" },
-  { id: "5", src: "/placeholder.svg", alt: "Carousel image 5" },
+  { id: "1", src: "/src/assets/images/image1.png", alt: "Image 1" },
+  { id: "2", src: "/src/assets/images/salads.png", alt: "Salads" },
+  { id: "3", src: "/src/assets/images/grocery%20store.png", alt: "Grocery store" },
+  { id: "4", src: "/src/assets/images/grocery%20store%202.png", alt: "Grocery store 2" },
 ];
 
 export default carouselImages;
