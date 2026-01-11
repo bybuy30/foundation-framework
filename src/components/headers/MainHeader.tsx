@@ -28,7 +28,7 @@ const MainHeader = () => {
         {/* Top Row - Logo, Search, Icons */}
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <a href="#hero" className="font-script text-2xl text-foreground">
+          <a href="#hero" className="font-moontime text-2xl text-foreground">
             Hydronest
           </a>
 

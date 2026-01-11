@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+
+@font-face {
+  font-family: 'Moontime';
+  src: local('Moontime'), url('/fonts/Moontime.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,15 +72,17 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    background-color: #BCC482;
+  }
+
+  #root {
+    background-color: #BCC482;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
   }
 }
-
-/* Custom Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
 
 .font-script {
   font-family: 'Playfair Display', serif;
@@ -80,6 +91,10 @@
 
 .font-display {
   font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-moontime {
+  font-family: 'Moontime', sans-serif;
 }
 
 .font-body {
@@ -142,6 +157,30 @@
       hsla(160, 40%, 5%, 0.5) 50%,
       hsla(160, 40%, 5%, 0.7) 100%
     );
+  }
+
+  .divider-line {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+  }
+
+  .brand-scroll {
+    display: flex;
+    animation: scroll-left 30s linear infinite;
+    gap: 2rem;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }
 
