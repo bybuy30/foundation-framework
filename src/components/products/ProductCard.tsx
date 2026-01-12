@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Product } from "@/data/products";
 
@@ -8,17 +9,25 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isSelected, setIsSelected] = useState(false);
+  const navigate = useNavigate();
 
   const { name, price, netQuantity } = product;
 
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card body click from firing
+    navigate(`/product/${product.id}`);
+  };
+
+  const handleCardBodyClick = () => {
+    setIsSelected(!isSelected);
+  };
+
   return (
-    <div
-      onClick={() => setIsSelected(!isSelected)}
-      className="cursor-pointer select-none flex flex-col w-full"
-    >
-      {/* Image Section */}
+    <div className="select-none flex flex-col w-full">
+      {/* Image Section - Clickable for Navigation */}
       <div
-        className="bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center"
+        onClick={handleImageClick}
+        className="bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
         style={{ aspectRatio: "299 / 300" }}
       >
         {product.image ? (
@@ -32,10 +41,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
 
-      {/* Content Section */}
+      {/* Content Section - Clickable for Color Toggle */}
       <div
+        onClick={handleCardBodyClick}
         className={cn(
-          "p-4 text-white relative transition-colors duration-300 ease-in-out",
+          "p-4 text-white relative transition-colors duration-300 ease-in-out cursor-pointer",
           isSelected ? "bg-[#CF3C2C]" : "bg-[#4A613D]"
         )}
         style={{ height: "125px" }}
