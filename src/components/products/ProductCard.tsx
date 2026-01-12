@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         style={{ height: "125px" }}
       >
         {/* Product Name */}
-        <h2 className="text-2xl font-medium leading-tight tracking-tight">
+        <h2 className="text-xl font-medium leading-tight tracking-tight">
           {name}
         </h2>
 
