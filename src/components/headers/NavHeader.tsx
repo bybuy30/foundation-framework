@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, Leaf } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { mainNavLinks } from "@/data/navigation";
 
@@ -40,21 +41,21 @@ const NavHeader = () => {
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <Leaf className="w-8 h-8 text-primary" />
           <span className="text-xl font-bold tracking-tight">HYDRONEST</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {mainNavLinks.map((link) => (
-            <a
+            <Link
               key={link.id}
-              href={link.href}
+              to={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -84,14 +85,14 @@ const NavHeader = () => {
         <div className="md:hidden border-t border-border bg-surface-elevated">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {mainNavLinks.map((link) => (
-              <a
+              <Link
                 key={link.id}
-                href={link.href}
+                to={link.href}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Button variant="default" size="sm" className="mt-2">
               Get Quote

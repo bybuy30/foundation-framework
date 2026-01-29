@@ -10,10 +10,10 @@ export interface NavLink {
 }
 
 export const mainNavLinks: NavLink[] = [
-  { id: "home", label: "Home", href: "#hero" },
-  { id: "about", label: "About Us", href: "#about" },
-  { id: "subscription", label: "Subscription", href: "#subscription" },
-  { id: "recipes", label: "Recipes", href: "#recipes" },
+  { id: "home", label: "Home", href: "/" },
+  { id: "about", label: "About Us", href: "/about-us" },
+  { id: "subscription", label: "Subscription", href: "/subscription" },
+  { id: "recipes", label: "Recipes", href: "/recipes" },
 ];
 
 export const heroButtons: NavLink[] = [

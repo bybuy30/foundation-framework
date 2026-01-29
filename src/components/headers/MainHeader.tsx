@@ -1,13 +1,8 @@
-/**
- * MainHeader Component
- * 
- * Single header with logo, search, nav links, and icons.
- * Matches the reference design exactly.
- */
-
 import { useState, useEffect } from "react";
 import { Search, Heart, User, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { mainNavLinks } from "@/data/navigation";
+import logo from "@/assets/images/logo.png";
 
 const MainHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,9 +23,13 @@ const MainHeader = () => {
         {/* Top Row - Logo, Search, Icons */}
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <a href="#hero" className="font-moontime text-2xl text-foreground">
-            Hydronest
-          </a>
+          <Link to="/">
+            <img
+            src={logo}
+            alt="Logo"
+            className="h-10 w-12"
+          />
+          </Link>
 
           {/* Search Bar - Desktop */}
           <div className="hidden md:flex flex-1 max-w-md mx-8">
@@ -65,13 +64,13 @@ const MainHeader = () => {
         {/* Navigation Row - Desktop */}
         <nav className="hidden md:flex items-center gap-8 h-10">
           {mainNavLinks.map((link) => (
-            <a
+            <Link
               key={link.id}
-              href={link.href}
+              to={link.href}
               className="text-sm text-foreground/80 hover:text-foreground transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
@@ -93,14 +92,14 @@ const MainHeader = () => {
             {/* Mobile Nav Links */}
             <nav className="flex flex-col gap-2">
               {mainNavLinks.map((link) => (
-                <a
+                <Link
                   key={link.id}
-                  href={link.href}
+                  to={link.href}
                   className="py-2 text-foreground/80 hover:text-foreground transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
