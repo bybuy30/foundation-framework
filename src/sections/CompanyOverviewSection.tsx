@@ -1,4 +1,4 @@
-import overviewImage from "../assets/images/About HydroNest.png";
+import overviewImage from "../assets/images/About HydroNest (1).png";
 
 const CompanyOverviewSection = () => {
   return (
