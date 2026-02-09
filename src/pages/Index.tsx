@@ -1,9 +1,3 @@
-/**
- * Index Page
- * 
- * Main landing page matching the reference design.
- */
-
 import MainHeader from "@/components/headers/MainHeader";
 import HeroSection from "@/sections/HeroSection";
 import CarouselSection from "@/sections/CarouselSection";
@@ -16,10 +10,8 @@ import FooterSection from "@/sections/FooterSection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background font-body">
-      {/* Header */}
       <MainHeader />
 
-      {/* Main Content */}
       <main>
         <HeroSection />
         <CarouselSection />

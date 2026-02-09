@@ -1,83 +1,79 @@
-/**
- * Recipe Listing Section
- * 
- * Displays horizontally scrollable recipe cards.
- * Features:
- * - Horizontal scrolling
- * - Recipe cards with dish image, name, and associated vegetables
- * - Click to redirect to Recipe Detail page
- */
-
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "@/components/recipes/RecipeCard";
+import { getAllRecipes } from "@/data/recipes";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const RecipeListingSection = () => {
   const navigate = useNavigate();
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const recipes = getAllRecipes();
 
-  const recipes = [
-    {
-      id: 1,
-      name: "Recipe 1",
-      image: "",
-      vegetables: ["Vegetable 1", "Vegetable 2"]
-    },
-    {
-      id: 2,
-      name: "Recipe 2",
-      image: "",
-      vegetables: ["Vegetable 2", "Vegetable 3"]
-    },
-    {
-      id: 3,
-      name: "Recipe 3",
-      image: "",
-      vegetables: ["Vegetable 3", "Vegetable 4"]
-    },
-    {
-      id: 4,
-      name: "Recipe 4",
-      image: "",
-      vegetables: ["Vegetable 4", "Vegetable 5"]
-    },
-    {
-      id: 5,
-      name: "Recipe 5",
-      image: "",
-      vegetables: ["Vegetable 5", "Vegetable 1"]
-    },
-    {
-      id: 6,
-      name: "Recipe 6",
-      image: "",
-      vegetables: ["Vegetable 1", "Vegetable 6"]
-    }
-  ];
+  const CARD_WIDTH = 288;
+  const GAP = 24; 
+  const SCROLL_AMOUNT = CARD_WIDTH + GAP;
 
-  const handleRecipeClick = (id: number) => {
-    // Navigate to recipe detail page
-    navigate(`/recipe/${id}`);
+  const scrollLeft = () => {
+    scrollRef.current?.scrollBy({
+      left: -SCROLL_AMOUNT,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    scrollRef.current?.scrollBy({
+      left: SCROLL_AMOUNT,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <section className="py-16 px-4 md:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-8">Featured Recipes</h2>
+    <section className="py-2 px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto relative">
 
-        {/* Horizontally Scrollable Recipe Cards */}
-        <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory scrollbar-hide">
+        {/* Left Arrow */}
+        <button
+          onClick={scrollLeft}
+          className="hidden md:flex absolute -left-16 top-1/2 -translate-y-1/2 z-10
+                     w-10 h-10 rounded-full bg-background border shadow
+                     items-center justify-center hover:bg-muted transition"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={scrollRight}
+          className="hidden md:flex absolute -right-16 top-1/2 -translate-y-1/2 z-10
+                     w-10 h-10 rounded-full bg-background border shadow
+                     items-center justify-center hover:bg-muted transition"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Scroll Container */}
+        <div
+          ref={scrollRef}
+          className="
+            flex 
+            gap-10
+            overflow-x-auto 
+            pb-6 
+            snap-x 
+            snap-mandatory 
+            scrollbar-hide
+          "
+        >
           {recipes.map((recipe) => (
-            <RecipeCard
+            <div
               key={recipe.id}
-              recipe={recipe}
-              onClick={() => handleRecipeClick(recipe.id)}
-            />
+              className="flex-shrink-0 snap-start"
+              onClick={() => navigate(`/recipe/${recipe.id}`)}
+            >
+              <RecipeCard recipe={recipe} />
+            </div>
           ))}
         </div>
-
-        {/* Scroll Hint */}
-        <p className="text-xs text-muted-foreground text-center mt-6">
-          Scroll horizontally to see more recipes
-        </p>
       </div>
     </section>
   );

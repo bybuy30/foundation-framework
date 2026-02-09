@@ -3,27 +3,39 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Auth from "./pages/Auth";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import AboutUs from "./pages/AboutUs";
 import Subscription from "./pages/Subscription";
 import Recipes from "./pages/Recipes";
+import RecipeDetail from "./pages/RecipeDetail";
 import NotFound from "./pages/NotFound";
+import WishlistPage from "./pages/wishlist";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  // Root application component that wires React Query, tooltips, toasters and routing together.
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      {/* Global toast containers */}
       <Toaster />
       <Sonner />
+      {/* BrowserRouter defines all top-level routes */}
       <BrowserRouter>
         <Routes>
+          {/* Home (landing) page is now the entry point at "/" */}
           <Route path="/" element={<Index />} />
+          {/* Auth page is available at a dedicated route and will be opened via header button */}
+          <Route path="/auth" element={<Auth />} />
+          {/* Existing content routes remain unchanged */}
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipe/:id" element={<RecipeDetail />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

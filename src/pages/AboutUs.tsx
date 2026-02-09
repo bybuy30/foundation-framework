@@ -9,26 +9,20 @@ import FooterSection from "@/sections/FooterSection";
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background font-body">
-      {/* Header */}
       <MainHeader />
 
-      {/* Main Content */}
-      <main>
+      <main>  
         <CompanyOverviewSection />
 
         <InteractiveContentSection />
 
-        {/* Brand Values Section */}
         <BrandValuesSection />
 
-        {/* Video Section */}
         <VideoSection />
 
-        {/* Contact Section */}
         <ContactSection />
       </main>
 
-      {/* Footer */}
       <FooterSection />
     </div>
   );

@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Inline&family=Orbitron:wght@400..900&family=Rubik+80s+Fade&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Tangerine:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* HYDRONEST Design System - Forest Green Theme */
 
 @layer base {
   :root {
@@ -70,9 +74,6 @@
   }
 }
 
-/* Custom Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
-
 .font-script {
   font-family: 'Playfair Display', serif;
   font-style: italic;
@@ -84,6 +85,12 @@
 
 .font-body {
   font-family: 'Inter', sans-serif;
+}
+
+@layer utilities {
+  .font-tangerine {
+    font-family: "Tangerine", cursive;
+  }
 }
 
 @layer components {

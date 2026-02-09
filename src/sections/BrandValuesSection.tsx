@@ -4,20 +4,17 @@ const OurStorySection = () => {
   return (
     <section className="relative w-full min-h-screen flex flex-row overflow-hidden bg-muted/50">
       
-      {/* 1. Narrow Rectangle at the far left edge */}
+      {/* 1. Narrow Rectangle at the  left */}
       <div className="w-12 md:w-20 bg-[#4F8F7A] flex-shrink-0 z-20" />
 
-      {/* 2. Main Content Area - flex-1 ensures it shares space with the image */}
       <div className="flex-1 flex flex-col justify-between py-10 px-10 md:px-20 z-10 min-w-0">
         
-        {/* OUR STORY - Top Left */}
         <div className="mb-10">
           <h2 className="text-6xl md:text-8xl font-Orbitron tracking-tighter uppercase leading-none">
             Our <br /> Story
           </h2>
         </div>
 
-        {/* 3. Paragraphs - max-w-4xl is the limit, but it will shrink if the image needs space */}
         <div className="flex flex-col gap-12 max-w-4xl w-full pb-10">
           <div className="space-y-4">
             <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground">Planning</h3>
@@ -57,7 +54,6 @@ const OurStorySection = () => {
         </div>
       </div>
 
-      {/* 4. Full Image - Changed from absolute to a flex-basis width to prevent overlap */}
       <div className="hidden lg:flex flex-basis-1/3 xl:flex-basis-1/2 max-w-[40%] h-screen sticky top-0 items-center justify-end pr-4">
         <img
           src={desImage}

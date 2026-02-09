@@ -1,7 +1,3 @@
-/**
- * CarouselSection Component - Updated styling
- */
-
 import ImageCarousel from "@/components/carousel/ImageCarousel";
 
 const CarouselSection = () => {

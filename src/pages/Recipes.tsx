@@ -4,35 +4,32 @@ import RecipeListingSection from "@/sections/RecipeListingSection";
 import ContactSection from "@/sections/ContactSection";
 import FooterSection from "@/sections/FooterSection";
 import recipesBanner from "../assets/images/recipes.png";
+import FeaturedDishes from "@/sections/FeaturedDishes";
+import ui from "../assets/images/ui2.png";
 
 const Recipes = () => {
   return (
-    <div className="min-h-screen bg-background font-body">
-      {/* Header */}
+    <div className="relative min-h-screen bg-background font-body overflow-x-hidden">
+
       <MainHeader />
 
-      {/* Main Content */}
-      <main>
+      <main className="relative z-10">
         {/* Banner Section */}
-        <section>
+        <section className="relative">
           <img
             src={recipesBanner}
             alt="Recipes Banner"
-            className="w-full h-full object-cover"
+            className="w-full h-auto object-cover"
           />
         </section>
 
-        {/* Recipe Filters */}
         <RecipeFiltersSection />
-
-        {/* Recipe Listing */}
         <RecipeListingSection />
 
-        {/* Contact */}
+        <FeaturedDishes />
         <ContactSection />
       </main>
 
-      {/* Footer */}
       <FooterSection />
     </div>
   );

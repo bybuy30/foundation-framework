@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Product } from "@/data/products";
@@ -13,21 +13,52 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const { name, price, netQuantity } = product;
 
-  const handleImageClick = (e: React.MouseEvent) => {
+  // Clicking the image navigates to the product detail page
+  const handleImageClick = (e: MouseEvent) => {
     e.stopPropagation(); // Prevent card body click from firing
     navigate(`/product/${product.id}`);
   };
 
+  // Simple local interaction that toggles the background color of the card body
   const handleCardBodyClick = () => {
     setIsSelected(!isSelected);
   };
 
+  // using the current user's JWT token (if present).
+  const handleWishlistClick = async (e: MouseEvent) => {
+    e.stopPropagation();
+
+    const token = localStorage.getItem("token");
+
+    // If there is no token, we silently ignore; users enter auth via the header button.
+    if (!token) {
+      return;
+    }
+
+    try {
+      await fetch("/api/wishlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          itemType: "product",
+          itemId: product.id,
+        }),
+      });
+      // UI does not yet visually distinguish saved vs. unsaved; this call only persists server-side.
+    } catch (err) {
+      console.error("Failed to add product to wishlist", err);
+    }
+  };
+
   return (
     <div className="select-none flex flex-col w-full">
-      {/* Image Section - Clickable for Navigation */}
+      {/* Image Section*/}
       <div
         onClick={handleImageClick}
-        className="bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
+        className="relative bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
         style={{ aspectRatio: "299 / 300" }}
       >
         {product.image ? (
@@ -76,3 +107,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 };
 
 export default ProductCard;
+
