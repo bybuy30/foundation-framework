@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth";
 import wishlistRoutes from "./routes/wishlist";
+import contactRoutes from "./routes/contact";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -27,6 +28,8 @@ app.use(morgan("dev")); // simple request logging
 app.use("/api/auth", authRoutes);
 // Wishlist routes are protected via the JWT middleware defined in the wishlist router
 app.use("/api/wishlist", wishlistRoutes);
+// Contact form routes for sending emails
+app.use("/api/contact", contactRoutes);
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 

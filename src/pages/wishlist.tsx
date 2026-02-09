@@ -120,7 +120,6 @@ const WishlistPage = () => {
 
       <main className="container mx-auto px-4 pt-28 pb-12">
         <div className="flex items-center gap-3 mb-8">
-          <Heart className="w-8 h-8 text-red-500 fill-red-500" />
           <h1 className="text-4xl font-bold">My Wishlist</h1>
         </div>
 

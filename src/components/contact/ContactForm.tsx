@@ -12,13 +12,34 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitted(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    // 1. Fixed URL and Protocol (http vs https)
+    const response = await fetch("http://localhost:4000/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    // 2. Parse the JSON response
+    const data = await response.json();
+
+    if (data.success) {
+      setIsSubmitted(true);
+      setFormData({ email: "" , message: "" });
+    } else {
+      alert(data.error || "Failed to send your query.");
+    }
+  } catch (err) {
+    console.error("Error submitting contact form", err);
+    alert("Failed to connect to the server.");
+  } finally {
     setIsSubmitting(false);
-  };
+  }
+};
 
   if (isSubmitted) {
     return (
