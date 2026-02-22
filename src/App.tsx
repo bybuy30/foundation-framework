@@ -27,16 +27,13 @@ const App = () => (
         <Routes>
           {/* Home (landing) page is now the entry point at "/" */}
           <Route path="/" element={<Index />} />
-          {/* Auth page is available at a dedicated route and will be opened via header button */}
           <Route path="/auth" element={<Auth />} />
-          {/* Existing content routes remain unchanged */}
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} />
           <Route path="/wishlist" element={<WishlistPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

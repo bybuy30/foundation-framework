@@ -1,10 +1,3 @@
-/**
- * Filter Configuration
- * 
- * This file contains filter categories and logic.
- * Modify categories here to update filters across the entire site.
- */
-
 export interface FilterCategory {
   id: string;
   label: string;

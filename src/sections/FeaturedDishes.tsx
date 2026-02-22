@@ -27,7 +27,7 @@ const FeaturedDishes = () => {
           <img
             src={stall}
             alt="Stall"
-            className="w-full h-64 md:h-[12rem] object-cover rounded-t-lg"
+            className="w-full h-64 md:h-[14rem] object-cover rounded-t-lg z-10"
           />
         </div>
 

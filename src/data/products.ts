@@ -4,6 +4,7 @@ export interface Product {
   price: number;
   netQuantity: string;
   image?: string;
+  category?: string; 
 }
 
 export const products: Product[] = [
@@ -18,6 +19,7 @@ export const products: Product[] = [
     name: "Lettuce Mix",
     price: 92,
     netQuantity: "150-180 g",
+    category: "salads",
   },
   {
     id: 3,
@@ -30,18 +32,21 @@ export const products: Product[] = [
     name: "Yellow Bell Pepper",
     price: 85,
     netQuantity: "250-350 g",
+    category: "peppers",
   },
   {
     id: 5,
     name: "Red Bell Pepper",
     price: 85,
     netQuantity: "250-350 g",
+    category: "peppers",
   },
   {
     id: 6,
     name: "Green Capsicum",
     price: 60,
     netQuantity: "250 g",
+    category: "peppers",
   },
   {
     id: 7,
@@ -54,6 +59,7 @@ export const products: Product[] = [
     name: "Iceberg Lettuce",
     price: 108,
     netQuantity: "300-650 g",
+    category: "exotic-greens",
   },
   {
     id: 9,
@@ -66,6 +72,7 @@ export const products: Product[] = [
     name: "Cocktail Bell Peppers",
     price: 135,
     netQuantity: "350-550 g",
+    category: "peppers",
   },
   {
     id: 11,
@@ -90,6 +97,7 @@ export const products: Product[] = [
     name: "Celery",
     price: 80,
     netQuantity: "250 g",
+    category: "exotic-greens",
   },
   {
     id: 15,
@@ -108,6 +116,7 @@ export const products: Product[] = [
     name: "Pok Choi",
     price: 56,
     netQuantity: "100-250 g",
+    category: "exotic-greens",
   },
   {
     id: 18,
@@ -120,59 +129,69 @@ export const products: Product[] = [
     name: "Salad Mix Cucumber",
     price: 108,
     netQuantity: "150-180 g",
+    category: "salads",
   },
   {
     id: 20,
     name: "Arugula",
     price: 55,
     netQuantity: "50 g",
+    category: "exotic-greens",
   },
   {
     id: 21,
     name: "Italian Basil",
     price: 45,
     netQuantity: "50 g",
+    category: "exotic-greens",
   },
     {
     id: 22,
     name: "Curly Kale",
     price: 50,
     netQuantity: "100 g",
+    category: "exotic-greens",
   },
   {
     id: 23,
     name: "Kale Italian",
     price: 50,
     netQuantity: "100 g",
+    category: "exotic-greens",
   },
   {
     id: 24,
     name: "Swiss Chard",
     price: 55,
     netQuantity: "100 g",
+    category: "exotic-greens",
   },
   {
     id: 25,
     name: "Locarno",
     price: 60,
     netQuantity: "120-150 g",
+    category: "live-plants",
   },
     {
     id: 26,
     name: "Romaine",
     price: 60,
     netQuantity: "120-150 g",
+    category: "live-plants",
   },
     {
     id: 27,
     name: "Butterhead",
     price: 60,
     netQuantity: "120-150 g",
+    category: "live-plants",
   },
   {
     id: 28,
     name: "Lollo Rosse",
     price: 60,
     netQuantity: "120-150 g",
+    category: "live-plants",
   },
 ];

@@ -67,10 +67,17 @@ const Auth = () => {
         body: JSON.stringify({ name, email, password, age: Number(age), gender }),
       });
 
-      const data = await res.json();
+      // Safely parse JSON — backend might return empty/invalid body
+      const text = await res.text();
+      let data: any = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch (e) {
+        console.error("Signup: invalid JSON response:", text);
+      }
 
       if (!res.ok) {
-        handleError(data?.message || "Signup failed");
+        handleError(data?.message || `Signup failed (status ${res.status})`);
         setLoading(false);
         return;
       }
@@ -106,9 +113,17 @@ const Auth = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await res.json();
+      // Safely parse JSON — backend might return empty/invalid body
+      const text = await res.text();
+      let data: any = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch (e) {
+        console.error("Login: invalid JSON response:", text);
+      }
+
       if (!res.ok) {
-        handleError(data?.message || "Login failed");
+        handleError(data?.message || `Login failed (status ${res.status})`);
         setLoading(false);
         return;
       }

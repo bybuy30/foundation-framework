@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/User";
 import AuthLog from "../models/AuthLog";
+import LoginLog from "../models/LoginLog";
 
 const router = Router();
 
@@ -68,37 +69,29 @@ router.post("/register", async (req, res) => {
 // - write an auth log
 // - return a JWT token and basic profile
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const ip = req.ip;
-
   try {
-    if (!email || !password) {
-      await AuthLog.create({ email, success: false, type: "login", ip, message: "missing" });
-      return res.status(400).json({ message: "Missing email or password" });
-    }
-
+    const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user) {
-      await AuthLog.create({ email, success: false, type: "login", ip, message: "user not found" });
-      return res.status(401).json({ message: "Invalid credentials" });
+
+    if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const match = await bcrypt.compare(password, user.passwordHash);
-    if (!match) {
-      await AuthLog.create({ email, success: false, type: "login", ip, message: "invalid password" });
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-
-    // Build token + profile response using the helper for consistency
+    // Use the helper function! 
+    // It uses the fallback "dev-secret" if the env var is missing.
     const payload = buildAuthResponse(user);
 
-    await AuthLog.create({ email, success: true, type: "login", ip, message: "logged in" });
+    await LoginLog.create({ userEmail: user.email });
 
-    return res.json(payload);
-  } catch (err: any) {
-    console.error("Login error", err);
-    await AuthLog.create({ email, success: false, type: "login", ip, message: String(err?.message || err) });
-    return res.status(500).json({ message: "Server error" });
+    // Ensure the response includes the 'id' if your frontend needs it specifically
+    res.json({
+      ...payload,
+      user: { ...payload.user, id: user._id }
+    });
+    
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 

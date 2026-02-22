@@ -10,8 +10,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background font-body">
       <MainHeader />
-
-      <main>  
+      <main>
         <CompanyOverviewSection />
 
         <InteractiveContentSection />

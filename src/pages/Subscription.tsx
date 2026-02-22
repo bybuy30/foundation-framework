@@ -1,4 +1,5 @@
 import MainHeader from "@/components/headers/MainHeader";
+import AmbientParticles from "@/components/layout";
 import SubscriptionPlansSection from "@/sections/SubscriptionPlansSection";
 import ContactSection from "@/sections/ContactSection";
 import FooterSection from "@/sections/FooterSection";

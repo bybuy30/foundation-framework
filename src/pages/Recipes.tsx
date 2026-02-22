@@ -1,4 +1,5 @@
 import MainHeader from "@/components/headers/MainHeader";
+import AmbientParticles from "@/components/layout";
 import RecipeFiltersSection from "@/sections/RecipeFiltersSection";
 import RecipeListingSection from "@/sections/RecipeListingSection";
 import ContactSection from "@/sections/ContactSection";

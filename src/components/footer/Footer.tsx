@@ -8,6 +8,23 @@ import { footerLinks, socialLinks } from "@/data/navigation";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const socialLinks = [
+    {
+      id: "instagram",
+      name: "Instagram",
+      href: "https://www.instagram.com/hydronest_official?igsh=ZjgxejJzc2RpMWJs"
+    },
+    {
+      id: "facebook",
+      name: "Facebook",
+      href: "https://www.facebook.com/share/1MdnRxntVm/?mibextid=wwXIfr"
+    },
+    {
+      id: "linkedin",
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/hydro-nest/"
+    }
+  ]
   return (
     <footer className="bg-surface border-t border-border">
       <div className="container mx-auto px-4 py-12">
@@ -66,7 +83,8 @@ const Footer = () => {
                 const Icon = 
                   link.id === "instagram" ? Instagram :
                   link.id === "facebook" ? Facebook :
-                  Linkedin;
+                  link.id === "linkedin" ? Linkedin :
+                  null;
                 
                 return (
                   <a
@@ -75,7 +93,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                    aria-label={link.label}
+                    aria-label={link.name}
                   >
                     <Icon className="w-5 h-5" />
                   </a>

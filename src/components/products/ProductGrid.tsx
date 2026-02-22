@@ -1,11 +1,3 @@
-/**
- * ProductGrid Component
- * 
- * Displays products in a responsive grid layout.
- * Handles filtering and displays ProductCard components.
- * Grid layout: 5 products per row
- */
-
 import { useState, useMemo } from "react";
 import ProductCard from "./ProductCard";
 import ProductFilters from "./ProductFilters";

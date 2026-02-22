@@ -1,10 +1,3 @@
-/**
- * ProductFilters Component
- * 
- * Filter buttons for product categories.
- * Update filter categories in src/data/filters.ts
- */
-
 import { filterCategories, type FilterCategory } from "@/data/filters";
 
 interface ProductFiltersProps {
@@ -13,22 +6,25 @@ interface ProductFiltersProps {
 }
 
 const ProductFilters = ({ activeFilter, onFilterChange }: ProductFiltersProps) => {
+    return (
+    <div className="flex flex-wrap gap-3">
+      {filterCategories.map((filter) => {
+        const isActive = activeFilter === filter.id;
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      {filterCategories.map((category: FilterCategory) => (
         <button
-          key={category.id}
-          onClick={() => onFilterChange(category.id)}
+          key={filter.id}
+          onClick={() => onFilterChange(filter.id)}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            activeFilter === category.id
-              ? "filter-active"
-              : "filter-inactive"
+            isActive
+              ? "border-2 border-[#43856d] text-[#43856d] bg-transparent rounded-full"
+              : "text-gray-600 bg-transparent hover:text-[#43856d]"
           }`}
-          aria-pressed={activeFilter === category.id}
+          aria-pressed={isActive}
         >
-          {category.label}
+          {filter.label}
         </button>
-      ))}
+      );
+      })}
     </div>
   );
 };

@@ -1,8 +1,3 @@
-/**
- * HeroSection Component
- * Sticky Video + Typing Animation Heading
- */
-
 import { useEffect, useState } from "react";
 import hydronestVideo from "@/assets/Video/Hydronest.mp4";
 import { heroButtons } from "@/data/navigation";
@@ -82,7 +77,7 @@ const HeroSection = () => {
       style={{ height: "140vh" }}
     >
       {/* Sticky Video Layer */}
-      <div className="sticky top-0 h-screen w-full z-0 overflow-hidden">
+      <div className="sticky top-0 h-screen w-full z-2 overflow-hidden">
         <video
           autoPlay
           muted
