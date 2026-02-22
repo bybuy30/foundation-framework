@@ -16,9 +16,9 @@ const transporter = nodemailer.createTransport({
 // Verify transporter connection on startup
 transporter.verify((error, success) => {
   if (error) {
-    console.error("❌ Email Transporter Error:", error);
+    console.error("Email Transporter Error:", error);
   } else {
-    console.log("✅ Email service is ready to send messages");
+    console.log("Email service is ready to send messages");
   }
 });
 
@@ -59,7 +59,7 @@ router.post("/", async (req: Request, res: Response) => {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #f9f9f9;">
           <div style="background: linear-gradient(135deg, #4A613D 0%, #6b7f4f 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-            <h2 style="margin: 0; font-size: 24px;">🌿 New Contact Form Submission</h2>
+            <h2 style="margin: 0; font-size: 24px;">New Contact Form Submission</h2>
           </div>
           
           <div style="padding: 20px; background: white;">
@@ -87,7 +87,7 @@ router.post("/", async (req: Request, res: Response) => {
           </div>
           
           <div style="background: #f0f0f0; padding: 15px; border-radius: 0 0 8px 8px; text-align: center; font-size: 12px; color: #666;">
-            <p style="margin: 0;">💚 This email was sent from the Hydronest Contact Form</p>
+            <p style="margin: 0;">This email was sent from the Hydronest Contact Form</p>
             <p style="margin: 5px 0 0 0;">Reply directly to this email to respond to the user</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ router.post("/", async (req: Request, res: Response) => {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: linear-gradient(135deg, #4A613D 0%, #6b7f4f 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
-            <h2 style="margin: 0;">🌿 Thank you for contacting Hydronest!</h2>
+            <h2 style="margin: 0;">Thank you for contacting Hydronest!</h2>
           </div>
           <p>Hi ${name || "there"},</p>
           <p>We have received your message and will get back to you as soon as possible.</p>
@@ -113,7 +113,7 @@ router.post("/", async (req: Request, res: Response) => {
             <strong>Your message:</strong><br>
             ${message.replace(/\n/g, "<br>")}
           </p>
-          <p>Best regards,<br>The Hydronest Team 🌱</p>
+          <p>Best regards,<br>The Hydronest Team</p>
         </div>
       `,
     };
