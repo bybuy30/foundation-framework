@@ -1,20 +1,3 @@
-/**
- * Subscription Plan Card Component
- * 
- * Individual subscription plan card with flip animation.
- * Shows plan details on front and product range + vegetable categories on back.
- * 
- * Props:
- * - plan: {
- *     id: number,
- *     name: string,
- *     price: string,
- *     benefits: string,
- *     products: string[],
- *     vegetables: string[]
- *   }
- */
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -53,7 +36,6 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
           transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"
         }}
       >
-        {/* Front of Card - Plan Details */}
         <div
           className="border rounded-lg p-6 bg-background hover:shadow-lg transition-shadow flex flex-col h-full"
           style={{
@@ -62,7 +44,6 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
         >
           <h3 className="text-xl font-semibold mb-4">{plan.name}</h3>
           
-          {/* Price */}
           <div className="mb-6">
             <p className="text-3xl font-bold mb-2">
               {plan.price}
@@ -70,21 +51,17 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
             </p>
           </div>
 
-          {/* Benefits Summary */}
           <p className="text-muted-foreground mb-6 flex-grow">
             {plan.benefits}
           </p>
 
-          {/* Flip Hint */}
           <p className="text-xs text-muted-foreground mb-4 text-center">
             Click to see products
           </p>
 
-          {/* Subscribe Button */}
           <Button className="w-full">Subscribe</Button>
         </div>
 
-        {/* Back of Card - Product Range & Vegetables */}
         <div
           className="border rounded-lg p-6 bg-background hover:shadow-lg transition-shadow flex flex-col h-full absolute inset-0"
           style={{
@@ -94,7 +71,6 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
         >
           <h3 className="text-xl font-semibold mb-4">{plan.name}</h3>
 
-          {/* Products Section */}
           <div className="mb-6">
             <h4 className="text-sm font-semibold text-muted-foreground mb-3">
               Products Included
@@ -111,7 +87,6 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
             </div>
           </div>
 
-          {/* Vegetables Section */}
           <div className="mb-6 flex-grow">
             <h4 className="text-sm font-semibold text-muted-foreground mb-3">
               Vegetables Included
@@ -128,7 +103,6 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
             </div>
           </div>
 
-          {/* Flip Back Hint */}
           <p className="text-xs text-muted-foreground text-center">
             Click to flip back
           </p>

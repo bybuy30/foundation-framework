@@ -17,7 +17,6 @@ const handleSubmit = async (e: React.FormEvent) => {
   setIsSubmitting(true);
 
   try {
-    // 1. Fixed URL and Protocol (http vs https)
     const response = await fetch("http://localhost:4000/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -60,18 +59,13 @@ const handleSubmit = async (e: React.FormEvent) => {
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
       </style>
 
-      {/* Main Background Container*/}
+      {/* Main Background*/}
       <div
         className="relative w-full h-[450px] flex items-center bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ backgroundImage: `url(${contactBg})` }}
       >
-        {/* Dark Overlay for text legibility */}
         <div className="absolute inset-0 bg-black/30" />
-
-        {/* Content Wrapper: Contains the padding so text doesn't touch the screen edge */}
         <div className="relative z-10 w-full px-8 md:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-          {/* Left Side: Headline */}
           <div className="text-white">
             <h2
               className="text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight max-w-2xl"
@@ -80,8 +74,6 @@ const handleSubmit = async (e: React.FormEvent) => {
               Write us an E-mail for your Queries
             </h2>
           </div>
-
-          {/* Right Side: Form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-lg lg:ml-auto">
             <input
               type="email"

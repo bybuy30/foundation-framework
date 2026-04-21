@@ -9,7 +9,7 @@ import authRoutes from "./routes/auth";
 import wishlistRoutes from "./routes/wishlist";
 import contactRoutes from "./routes/contact";
 
-// Load environment variables from .env file
+// Load environment from .env file
 dotenv.config();
 
 const MONGO = process.env.MONGO_URI || "";
@@ -20,15 +20,15 @@ const app = express();
 // Middlewares
 app.use(express.json()); 
 app.use(cookieParser());
-// Allow both common Vite dev ports (5173 & 8080) in development to avoid CORS errors
+// Avoid CORS errors
 app.use(cors({ origin: ["http://localhost:5173", "http://localhost:8080"], credentials: true })); // allow dev clients
-app.use(morgan("dev")); // simple request logging
+app.use(morgan("dev")); 
 
 // Routes
 app.use("/api/auth", authRoutes);
-// Wishlist routes are protected via the JWT middleware defined in the wishlist router
+// Wishlist routes are protected via the JWT middleware 
 app.use("/api/wishlist", wishlistRoutes);
-// Contact form routes for sending emails
+// Contact form 
 app.use("/api/contact", contactRoutes);
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));

@@ -1,22 +1,13 @@
-/**
- * BrandScroller Component
- * * Horizontal infinite scrolling brand logos
- * Updated for larger visibility and 5-brand focus.
- */
-
 import { brands } from "@/data/brands";
 
 const BrandScroller = () => {
-  // Duplicate brands for seamless infinite scroll
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <div className="relative overflow-hidden py-12"> {/* Increased vertical padding */}
-      {/* Gradient Overlays for smooth entry/exit */}
+    <div className="relative overflow-hidden py-12"> 
       <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-surface to-transparent z-10" />
       <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-surface to-transparent z-10" />
 
-      {/* Scrolling Row */}
       <div className="brand-scroll-left flex items-center gap-12"> {/* Increased gap */}
         {duplicatedBrands.map((brand, index) => (
           <div

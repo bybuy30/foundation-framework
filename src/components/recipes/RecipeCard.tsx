@@ -1,12 +1,10 @@
 import { MouseEvent } from "react";
 
-// Basic recipe shape used by this card component
 interface Recipe {
   id: number;
   name: string;
   image: string;
   vegetables: string[];
-  // cookingTime is used for display in the footer of the card
   cookingTime: string;
 }
 
@@ -16,15 +14,10 @@ interface RecipeCardProps {
 }
 
 const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
-  // Handle wishlist click for this recipe; stops the parent card click
-  // so that it does not trigger navigation when the user just wants to save.
   const handleWishlistClick = async (e: MouseEvent) => {
     e.stopPropagation();
 
     const token = localStorage.getItem("token");
-
-    // If the user is not authenticated, simply ignore the click for now.
-    // The header Login/Sign Up button is the entry point for auth.
     if (!token) {
       return;
     }
@@ -58,14 +51,11 @@ const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
         </div>
       </div>
 
-      {/* Recipe Details */}
       <div className="p-4">
-        {/* Recipe Name */}
         <h3 className="font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
           {recipe.name}
         </h3>
 
-        {/* Associated Vegetables */}
         <div className="mb-4">
           <div className="flex flex-wrap gap-1">
             {recipe.vegetables.map((vegetable, index) => (
@@ -79,7 +69,6 @@ const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
           </div>
         </div>
 
-        {/* Cooking Time */}
         <div className="text-lg font-bold justify-center flex items-center gap-2 text-muted-foreground">
           <span>Cooking Time:</span>
           <span>{recipe.cookingTime}</span>

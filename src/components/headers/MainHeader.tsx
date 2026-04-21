@@ -28,10 +28,6 @@ const MainHeader = () => {
   const isRecipesPage = location.pathname === "/recipes";
   const isProductsPage = location.pathname === "/products";
 
-  /**
-   * Routes search queries based on the current page context.
-   * If on recipes/products page, it filters that page. Otherwise, goes to global search.
-   */
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -47,9 +43,7 @@ const MainHeader = () => {
     setSearchQuery("");
   };
 
-  // Build client-side suggestions from local data
   useEffect(() => {
-    // Lazy import to keep bundle small
     if (!searchQuery.trim()) {
       setSuggestions([]);
       setIsSuggestionsOpen(false);
@@ -81,7 +75,6 @@ const MainHeader = () => {
     })();
   }, [searchQuery]);
 
-  // Close suggestions when clicking outside
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       if (!containerRef.current) return;
@@ -94,12 +87,11 @@ const MainHeader = () => {
   }, []);
 
   useEffect(() => {
-    // Header update on scroll
+    // Header on scroll
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    // Synchronize UI with user data stored in localStorage
     const syncAuthStateFromStorage = () => {
       const token = localStorage.getItem("token");
       const name = localStorage.getItem("userName") || "";
@@ -214,7 +206,6 @@ const MainHeader = () => {
             </div>
           </form>
 
-          {/* Right-side Utilities */}
           <div className="flex items-center gap-4">
             <Link
               to="/wishlist"
@@ -223,7 +214,6 @@ const MainHeader = () => {
               <Heart className="w-5 h-5" />
             </Link>
 
-            {/* Auth profile display */}
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
@@ -247,7 +237,6 @@ const MainHeader = () => {
               </button>
             )}
 
-            {/* Mobile Navigation Toggle */}
             <button
               className="md:hidden p-2 hover:bg-foreground/10 rounded-full transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

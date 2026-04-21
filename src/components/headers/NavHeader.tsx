@@ -1,10 +1,3 @@
-/**
- * NavHeader Component
- * 
- * Main navigation header positioned below TopHeader.
- * Slides up and hides when scrolling down, reappears when scrolling up.
- */
-
 import { useState, useEffect } from "react";
 import { Menu, X, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";

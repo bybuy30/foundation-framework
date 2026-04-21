@@ -1,7 +1,3 @@
-/**
- * Footer Component - Updated for forest green theme
- */
-
 import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { footerLinks, socialLinks } from "@/data/navigation";
 

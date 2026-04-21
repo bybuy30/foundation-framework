@@ -1,9 +1,3 @@
-/**
- * ImageCarousel Component
- * * Displays a carousel of images with a fixed aspect ratio.
- * Scaled down from full-screen to a centered, proportional container.
- */
-
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -37,13 +31,12 @@ const ImageCarousel = () => {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <div className="w-full px-4 py-8"> {/* Container to provide outer spacing */}
+    <div className="w-full px-4 py-8"> 
       <div 
         className="relative max-w-5xl mx-auto aspect-video overflow-hidden rounded-xl bg-muted shadow-xl"
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        {/* Images Wrapper */}
         <div 
           className="flex transition-transform duration-500 ease-out h-full"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -59,7 +52,6 @@ const ImageCarousel = () => {
           ))}
         </div>
 
-        {/* Navigation Arrows */}
         <Button
           variant="ghost"
           size="icon"
@@ -79,7 +71,6 @@ const ImageCarousel = () => {
           <ChevronRight className="w-6 h-6" />
         </Button>
 
-        {/* Dots Indicator */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/20 backdrop-blur-sm">
           {carouselImages.map((_, index) => (
             <button

@@ -16,16 +16,12 @@ import WishlistPage from "./pages/wishlist";
 const queryClient = new QueryClient();
 
 const App = () => (
-  // Root application component that wires React Query, tooltips, toasters and routing together.
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      {/* Global toast containers */}
       <Toaster />
       <Sonner />
-      {/* BrowserRouter defines all top-level routes */}
       <BrowserRouter>
         <Routes>
-          {/* Home (landing) page is now the entry point at "/" */}
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/product/:id" element={<ProductDetail />} />

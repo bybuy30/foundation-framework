@@ -1,7 +1,3 @@
-/**
- * Related Products Carousel Component
- */
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getProductDetail, getRelatedProducts } from "@/data/product";

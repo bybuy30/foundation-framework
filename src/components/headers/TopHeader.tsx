@@ -1,10 +1,3 @@
-/**
- * TopHeader Component
- * 
- * Fixed header at the very top of the page.
- * Contains branding/logo and utility actions (e.g., cart, account).
- */
-
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const TopHeader = () => {

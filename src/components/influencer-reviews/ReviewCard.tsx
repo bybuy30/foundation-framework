@@ -1,8 +1,3 @@
-/**
- * ReviewCard Component
- * * Displays a single influencer review with a rectangular thumbnail and centered text.
- */
-
 import { Star } from "lucide-react";
 import { InfluencerReview } from "@/data/influencer-reviews";
 
@@ -33,7 +28,6 @@ const ReviewCard = ({ review, isActive }: ReviewCardProps) => {
           : "opacity-0 translate-y-4 pointer-events-none absolute"
       }`}
     >
-      {/* Rectangular Thumbnail */}
       <div className="mb-6">
         <a
           href={review.video_link}
@@ -55,7 +49,6 @@ const ReviewCard = ({ review, isActive }: ReviewCardProps) => {
         </a>
       </div>
 
-      {/* Influencer Content Section */}
       <div className="flex flex-col items-center text-center max-w-2xl px-4">
         <h3 className="font-bold text-2xl md:text-3xl text-foreground mb-2">
           {review.influencer_name}
