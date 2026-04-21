@@ -1,9 +1,5 @@
 /**
  * Related Products Carousel Component
- * 
- * Displays a carousel of related products with dual-component structure:
- * - Image click: navigates to product detail page
- * - Card body click: toggles background color (green/red)
  */
 
 import { useState } from "react";
@@ -35,18 +31,20 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({
   }
 
   const handleImageClick = (e: React.MouseEvent, productId: number) => {
-    e.stopPropagation(); // Prevent card body click from firing
+    e.stopPropagation();
     navigate(`/product/${productId}`);
+
+    // ✅ scroll to top
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
   };
 
   const handleCardBodyClick = (productId: number) => {
     setSelectedProducts((prev) => {
       const newSet = new Set(prev);
-      if (newSet.has(productId)) {
-        newSet.delete(productId);
-      } else {
-        newSet.add(productId);
-      }
+      if (newSet.has(productId)) newSet.delete(productId);
+      else newSet.add(productId);
       return newSet;
     });
   };
@@ -56,30 +54,33 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({
       <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
         {relatedProducts.map((product: Product) => {
           const isSelected = selectedProducts.has(product.id);
-          
+
+          // ✅ FIXED IMAGE SOURCE
+          const imageSrc =
+            product.images?.[0] || product.image || "/placeholder.png";
+
           return (
             <div
               key={product.id}
               className="flex-shrink-0 w-64 select-none flex flex-col"
             >
-              {/* Image Section - Clickable for Navigation */}
+              {/* Image Section */}
               <div
                 onClick={(e) => handleImageClick(e, product.id)}
                 className="bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
                 style={{ aspectRatio: "299 / 300" }}
               >
-                {product.image ? (
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-b from-gray-200 to-gray-300" />
-                )}
+                <img
+                  src={imageSrc}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/placeholder.png";
+                  }}
+                />
               </div>
 
-              {/* Content Section - Clickable for Color Toggle */}
+              {/* Content Section */}
               <div
                 onClick={() => handleCardBodyClick(product.id)}
                 className={cn(
@@ -88,12 +89,10 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({
                 )}
                 style={{ height: "125px" }}
               >
-                {/* Product Name */}
                 <h3 className="text-xl font-medium leading-tight tracking-tight">
                   {product.name}
                 </h3>
 
-                {/* Price — Bottom Left */}
                 <div className="absolute bottom-4 left-4 flex items-baseline gap-1">
                   <span className="text-2xl font-light">₹</span>
                   <span className="text-5xl font-bold leading-none">
@@ -101,12 +100,13 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({
                   </span>
                 </div>
 
-                {/* Net Weight — Bottom Right */}
                 <div className="absolute bottom-4 right-4 text-right leading-none">
                   <p className="text-[10px] opacity-90 uppercase tracking-tighter">
                     net wt.
                   </p>
-                  <p className="text-lg font-semibold">{product.netQuantity}</p>
+                  <p className="text-lg font-semibold">
+                    {product.netQuantity}
+                  </p>
                 </div>
               </div>
             </div>

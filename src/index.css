@@ -91,6 +91,19 @@
   }
 }
 
+.title-boundary {
+  height: 100px;
+  background-color: #000 !important;
+  width: 100%;
+  border-top: 4px solid #14a84d;
+  border-bottom: 4px solid #14a84d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: relative;
+}
+
 .font-script {
   font-family: 'Playfair Display', serif;
   font-style: italic;

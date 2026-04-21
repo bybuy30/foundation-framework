@@ -8,12 +8,11 @@ const router = Router();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER, // Your Gmail address (e.g., bilalman399@gmail.com)
-    pass: process.env.EMAIL_PASS, // Gmail App Password (NOT regular password)
+    user: process.env.EMAIL_USER, 
+    pass: process.env.EMAIL_PASS, 
   },
 });
 
-// Verify transporter connection on startup
 transporter.verify((error, success) => {
   if (error) {
     console.error("Email Transporter Error:", error);
@@ -23,11 +22,8 @@ transporter.verify((error, success) => {
 });
 
 /**
- * POST /api/contact
- * - Receives contact form submissions from the frontend
- * - Sends email to the admin (bilalman399@gmail.com)
- * - Body: { email: string, name: string, subject: string, message: string }
- * - Returns: { success: boolean, message: string }
+ * - Sends email to the admin
+ * - Body
  */
 router.post("/", async (req: Request, res: Response) => {
   try {
@@ -48,11 +44,10 @@ router.post("/", async (req: Request, res: Response) => {
         .json({ success: false, error: "Invalid email format" });
     }
 
-    // Setup email content to send to admin
     const mailOptions = {
-      from: process.env.EMAIL_USER, // Must be the authenticated Gmail account
-      to: process.env.MY_EMAIL || "bilalman399@gmail.com", // Admin email (your email)
-      replyTo: email, // Allows you to reply directly to the user
+      from: process.env.EMAIL_USER, 
+      to: process.env.MY_EMAIL || "bilalman399@gmail.com", 
+      replyTo: email, 
       subject: subject
         ? `New Contact Form: ${subject}`
         : `New Contact Form from ${name || email}`,
@@ -97,7 +92,6 @@ router.post("/", async (req: Request, res: Response) => {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Also optionally send a confirmation email to the user
     const confirmationEmail = {
       from: process.env.EMAIL_USER,
       to: email,

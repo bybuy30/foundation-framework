@@ -21,11 +21,33 @@ export interface ProductProperty {
  * Get related product IDs (excluding current product)
  * Returns up to 6 related products
  */
-const getRelatedProductIds = (currentId: number, allProducts: Product[]): number[] => {
-  return allProducts
-    .filter((p) => p.id !== currentId)
-    .slice(0, 6)
-    .map((p) => p.id);
+const getRelatedProductIds = (
+  currentId: number,
+  allProducts: Product[]
+): number[] => {
+  const currentProduct = allProducts.find((p) => p.id === currentId);
+  if (!currentProduct) return [];
+
+  // ✅ Step 1: Get same category products
+  let related = allProducts.filter(
+    (p) =>
+      p.id !== currentId &&
+      p.category &&
+      currentProduct.category &&
+      p.category === currentProduct.category
+  );
+
+  if (related.length < 5) {
+    const additional = allProducts.filter(
+      (p) =>
+        p.id !== currentId &&
+        !related.includes(p)
+    );
+
+    related = [...related, ...additional];
+  }
+  //5 products
+  return related.slice(0, 5).map((p) => p.id);
 };
 
 /**

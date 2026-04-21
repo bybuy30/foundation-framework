@@ -2,28 +2,28 @@ import { Schema, model } from "mongoose";
 
 const AuthLogSchema = new Schema(
   {
-    // The user associated with this wishlist item (using email or ID)
+    // Get wishlist item
     userEmail: { type: String, required: true },
     
-    // The ID of the item from your frontend (Product ID or Recipe ID)
+    // item id
     itemId: { type: Number, required: true },
 
-    // To tell the database if this is a product or a recipe
+    // Database type (product or recipe)
     itemType: { 
       type: String, 
       enum: ["product", "recipe"], 
       required: true 
     },
 
-    // Metadata for the wishlist page (optional but helps performance)
+    //details for the wishlist page 
     name: { type: String },
     image: { type: String },
-    price: { type: String }, // Price for products, can be empty for recipes
+    price: { type: String }, 
   },
   { timestamps: true }
 );
 
-// This ensures a user cannot add the same product/recipe to their wishlist twice
+// NO duplicate entries
 AuthLogSchema.index({ userEmail: 1, itemId: 1, itemType: 1 }, { unique: true });
 
 export default model("AuthLog", AuthLogSchema);

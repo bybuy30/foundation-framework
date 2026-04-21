@@ -1,13 +1,5 @@
 import { Schema, model } from "mongoose";
 
-// Mongoose schema for a User
-// - name: display name
-// - email: unique identifier
-// - passwordHash: bcrypt hashed password
-// - age, gender: extra signup fields
-// - wishlist: array of product/recipe references stored by type + id
-// - createdAt: timestamp
-
 const UserSchema = new Schema(
   {
     name: { type: String, required: true },

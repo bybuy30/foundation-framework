@@ -1,9 +1,3 @@
-/**
- * InfluencerReviewsSection Component
- * * Premium, minimal carousel displaying one review at a time.
- * Features auto-slide every 15 seconds, manual navigation, and smooth animations.
- */
-
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,13 +1,12 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-// Extend Express's Request type at runtime by attaching a userId property.
-// We keep the type loose here to avoid importing Express types in multiple places.
+// userId property.
 export interface AuthenticatedRequest extends Request {
   userId?: string;
 }
 
-// Secret for verifying JWT tokens (should match the one used in auth routes)
+// verifying JWT tokens (should match the one used while signing up)
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret";
 
 /**
@@ -24,7 +23,7 @@ export const requireAuth = (
 ) => {
   const authHeader = req.headers.authorization;
 
-  // Reject if no Authorization header is provided
+  // Reject if no Authorization 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ message: "Authorization header missing" });
   }
@@ -39,10 +38,10 @@ export const requireAuth = (
       return res.status(401).json({ message: "Invalid token payload" });
     }
 
-    // Attach the subject (user id) to the request for later use
+    // Attach the user id to the request for later use
     req.userId = decoded.sub;
 
-    // Continue to the next middleware/route handler
+    // Continue to the next route handler
     return next();
   } catch {
     return res.status(401).json({ message: "Invalid or expired token" });

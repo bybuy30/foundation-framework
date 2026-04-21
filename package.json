@@ -12,6 +12,7 @@
     "server": "cd server && npm install && npm run dev"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -53,6 +54,7 @@
     "dotenv": "^17.2.4",
     "embla-carousel-react": "^8.6.0",
     "express": "^5.2.1",
+    "gsap": "^3.14.2",
     "input-otp": "^1.4.2",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.462.0",

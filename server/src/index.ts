@@ -18,7 +18,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
 const app = express();
 
 // Middlewares
-app.use(express.json()); // parse JSON request bodies
+app.use(express.json()); 
 app.use(cookieParser());
 // Allow both common Vite dev ports (5173 & 8080) in development to avoid CORS errors
 app.use(cors({ origin: ["http://localhost:5173", "http://localhost:8080"], credentials: true })); // allow dev clients
@@ -33,7 +33,7 @@ app.use("/api/contact", contactRoutes);
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
-// Connect to MongoDB then start server
+// Connect to MongoDB
 (async () => {
   try {
     await mongoose.connect(MONGO);

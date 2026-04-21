@@ -137,10 +137,8 @@ router.get(
 );
 
 /**
- * DELETE /api/wishlist/:itemId
- * - Removes a specific product or recipe from the authenticated user's wishlist
- * - Query params: ?itemType=product|recipe
- * - Returns updated wishlist after removal
+ * DELETE from wishlist
+ * Returns updated wishlist after removal
  */
 router.delete(
   "/:itemId",
@@ -149,36 +147,35 @@ router.delete(
     const { itemId } = req.params;
     const { itemType } = req.query as { itemType?: "product" | "recipe" };
 
-    // Validate that itemType is provided and is valid
+    // Validate that itemType
     if (!itemType || !["product", "recipe"].includes(itemType)) {
       return res.status(400).json({ message: "Invalid itemType query parameter" });
     }
 
-    // Validate that itemId is a valid number
+    // Validate that itemId as a number
     const numItemId = parseInt(itemId, 10);
     if (isNaN(numItemId)) {
       return res.status(400).json({ message: "Invalid itemId" });
     }
 
     try {
-      // Load the current user by id from the auth middleware
+      // Load the current user by id 
       const user = await User.findById(req.userId);
 
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
 
-      // Filter out the specific wishlist item matching both itemType and itemId
       const updatedWishlist = (user.wishlist || []).filter(
         (entry: any) =>
           !(entry.itemType === itemType && entry.itemId === numItemId)
       );
 
-      // Update user's wishlist with the filtered array
+      // Update user's wishlist
       user.wishlist = updatedWishlist;
       await user.save();
 
-      // Return the updated wishlist to the client
+      // Return the updated wishlist
       return res.status(200).json({ wishlist: user.wishlist });
     } catch (err: any) {
       console.error("Wishlist delete error", err);

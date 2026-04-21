@@ -22,12 +22,7 @@ const buildAuthResponse = (user: any) => {
   };
 };
 
-// Register endpoint
-// - validate payload (name, email, password, age, gender)
-// - check duplicate email
-// - hash password and save user document
-// - write an auth log entry for observability
-// - return a JWT token and basic user profile that the frontend stores client-side
+// Register and validate email
 router.post("/register", async (req, res) => {
   const { name, email, password, age, gender } = req.body;
   const ip = req.ip;
@@ -63,11 +58,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login endpoint
-// - find user
-// - compare password
-// - write an auth log
-// - return a JWT token and basic profile
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -77,13 +67,11 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    // Use the helper function! 
-    // It uses the fallback "dev-secret" if the env var is missing.
     const payload = buildAuthResponse(user);
 
     await LoginLog.create({ userEmail: user.email });
 
-    // Ensure the response includes the 'id' if your frontend needs it specifically
+    // Ensure the response includes the 'id'
     res.json({
       ...payload,
       user: { ...payload.user, id: user._id }
@@ -95,16 +83,12 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Logout endpoint
-// - Since we are using JWT, the server doesn't "delete" the token
-// - We create a log entry for security auditing
-// - The frontend is responsible for deleting the token from localStorage
 router.post("/logout", async (req, res) => {
   const { email } = req.body; // Frontend can send the email for logging purposes
   const ip = req.ip;
 
   try {
-    // 1. Log the logout event in your AuthLog model
+    // Log the logout event
     await AuthLog.create({ 
       email: email || "unknown", 
       success: true, 
@@ -113,7 +97,7 @@ router.post("/logout", async (req, res) => {
       message: "user logged out" 
     });
 
-    // 2. Respond to the frontend
+    // Respond to the frontend
     return res.status(200).json({ message: "Successfully logged out" });
   } catch (err: any) {
     console.error("Logout error", err);

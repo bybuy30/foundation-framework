@@ -94,7 +94,7 @@ const MainHeader = () => {
   }, []);
 
   useEffect(() => {
-    // Header styling update on scroll
+    // Header update on scroll
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -116,7 +116,7 @@ const MainHeader = () => {
 
     syncAuthStateFromStorage();
 
-    // Listen for storage changes across different tabs
+    // Listen for storage changes 
     const handleStorage = (event: StorageEvent) => {
       if (
         ["token", "userName", "userEmail"].includes(event.key!)
@@ -134,9 +134,6 @@ const MainHeader = () => {
     };
   }, []);
 
-  /**
-   * Logs out the user by notifying the backend and clearing local storage.
-   */
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", {
@@ -175,7 +172,6 @@ const MainHeader = () => {
             <img src={logo} alt="Logo" className="h-10 w-12" />
           </Link>
 
-          {/* Context-aware Desktop Search Bar */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
             <div className="relative w-full" ref={containerRef}>
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/50" />
@@ -227,7 +223,7 @@ const MainHeader = () => {
               <Heart className="w-5 h-5" />
             </Link>
 
-            {/* Auth-dependent profile display */}
+            {/* Auth profile display */}
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
@@ -265,7 +261,7 @@ const MainHeader = () => {
           </div>
         </div>
 
-        {/* Static Desktop Navigation Links */}
+        {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 h-10">
           {mainNavLinks.map((link) => (
             <Link
