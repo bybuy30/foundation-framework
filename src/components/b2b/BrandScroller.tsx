@@ -8,7 +8,7 @@ const BrandScroller = () => {
       <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-surface to-transparent z-10" />
       <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-surface to-transparent z-10" />
 
-      <div className="brand-scroll-left flex items-center gap-12"> {/* Increased gap */}
+      <div className="brand-scroll-left flex items-center gap-12"> 
         {duplicatedBrands.map((brand, index) => (
           <div
             key={`${brand.id}-${index}`}

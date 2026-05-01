@@ -43,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="select-none flex flex-col w-full border rounded-lg overflow-hidden group">
-      {/* Image Container */}
+      
       <div
         onClick={handleImageClick}
         onMouseEnter={() => setIsHovering(true)}
@@ -66,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               width: `${(images.length + 1) * 100}%`,
             }}
           >
-            {/* Map images + clone of first image */}
+            
             {[...images, images[0]].map((img, index) => (
               <div 
                 key={index} 
@@ -86,7 +86,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
 
-      {/* Content Body */}
+      
       <div
         onClick={() => setIsSelected(!isSelected)}
         className={cn(

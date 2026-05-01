@@ -31,7 +31,7 @@ const RecipeListingSection = () => {
     <section className="py-2 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto relative">
 
-        {/* Left Arrow */}
+        
         <button
           onClick={scrollLeft}
           className="hidden md:flex absolute -left-16 top-1/2 -translate-y-1/2 z-10
@@ -41,7 +41,7 @@ const RecipeListingSection = () => {
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        {/* Right Arrow */}
+        
         <button
           onClick={scrollRight}
           className="hidden md:flex absolute -right-16 top-1/2 -translate-y-1/2 z-10
@@ -51,7 +51,7 @@ const RecipeListingSection = () => {
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Scroll Container */}
+        
         <div
           ref={scrollRef}
           className="
@@ -80,3 +80,4 @@ const RecipeListingSection = () => {
 };
 
 export default RecipeListingSection;
+

@@ -59,7 +59,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
       </style>
 
-      {/* Main Background*/}
+      
       <div
         className="relative w-full h-[450px] flex items-center bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ backgroundImage: `url(${contactBg})` }}

@@ -30,3 +30,4 @@ const ProductFilters = ({ activeFilter, onFilterChange }: ProductFiltersProps) =
 };
 
 export default ProductFilters;
+

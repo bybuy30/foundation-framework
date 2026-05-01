@@ -15,7 +15,7 @@ const Recipes = () => {
       <MainHeader />
 
       <main className="relative z-10">
-        {/* Banner Section */}
+        
         <section className="relative">
           <img
             src={recipesBanner}

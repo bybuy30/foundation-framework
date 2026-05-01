@@ -47,9 +47,9 @@ const InfluencerReviewsSection = () => {
   return (
     <section id="influencer-reviews" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
+        
         <div className="text-center mb-10">
-          {/* Centered Accent Line */}
+          
           <div className="w-[800px] h-[2px] bg-primary mx-auto mb-20 rounded-full" />
           
           <h2 className="font-helvetica text-4xl md:text-5xl mb-4">
@@ -60,10 +60,10 @@ const InfluencerReviewsSection = () => {
           </p>
         </div>
 
-        {/* Carousel Container */}
+        
         <div className="max-w-5xl mx-auto">
           <div className="relative">
-            {/* Navigation Arrows */}
+            
             <Button
               variant="ghost"
               size="icon"
@@ -86,7 +86,7 @@ const InfluencerReviewsSection = () => {
               <ChevronRight className="h-6 w-6" />
             </Button>
 
-            {/* Reviews Container */}
+            
             <div className="relative min-h-[450px] md:min-h-[500px] flex items-center justify-center">
               {influencerReviews.map((review, index) => (
                 <ReviewCard
@@ -97,7 +97,7 @@ const InfluencerReviewsSection = () => {
               ))}
             </div>
 
-            {/* Dots Indicator */}
+            
             <div className="flex items-center justify-center gap-2 mt-4">
               {influencerReviews.map((_, index) => (
                 <button

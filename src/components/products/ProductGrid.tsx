@@ -13,7 +13,7 @@ const ProductGrid = () => {
 
   return (
     <div className="space-y-8">
-      {/* Filters */}
+      
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <ProductFilters
           activeFilter={activeFilter}
@@ -24,14 +24,14 @@ const ProductGrid = () => {
         </p>
       </div>
 
-      {/* Product Grid - 5 products per row */}
+      
       <div className="grid grid-cols-5 gap-4">
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* Empty State */}
+      
       {filteredProducts.length === 0 && (
         <div className="text-center py-12">
           <p className="text-muted-foreground">No products found in this category.</p>
@@ -42,3 +42,4 @@ const ProductGrid = () => {
 };
 
 export default ProductGrid;
+

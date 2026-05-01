@@ -113,3 +113,4 @@ const SubscriptionPlanCard = ({ plan }: SubscriptionPlanCardProps) => {
 };
 
 export default SubscriptionPlanCard;
+

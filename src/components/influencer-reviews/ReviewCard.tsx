@@ -54,12 +54,12 @@ const ReviewCard = ({ review, isActive }: ReviewCardProps) => {
           {review.influencer_name}
         </h3>
 
-        {/* Star Rating */}
+        
         <div className="flex items-center gap-1 mb-4">
           {renderStars(review.star_rating)}
         </div>
 
-        {/* Quote */}
+        
         <blockquote className="relative">
           <p className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">
             &ldquo;{review.review_text}&rdquo;

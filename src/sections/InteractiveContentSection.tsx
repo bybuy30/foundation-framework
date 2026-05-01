@@ -103,7 +103,7 @@ const InteractiveContentSection = () => {
         </div>
       </div>
 
-      {/* Scroll section */}
+      
       <div ref={container} className="relative w-full h-screen">
         <div className="max-w-6xl mx-auto px-6 md:px-12 h-full flex flex-col justify-center">
 

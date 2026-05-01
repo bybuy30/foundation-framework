@@ -76,7 +76,7 @@ const HeroSection = () => {
       className="relative w-full"
       style={{ height: "140vh" }}
     >
-      {/* Sticky Video Layer */}
+      
       <div className="sticky top-0 h-screen w-full z-2 overflow-hidden">
         <video
           autoPlay
@@ -90,9 +90,9 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Scrolling Content Layer */}
+      
       <div className="relative z-10 w-full flex flex-col items-center -mt-[100vh]">
-        {/* Heading */}
+        
         <div className="h-[85vh] w-full flex flex-col justify-end items-center px-4">
           <h1
             className="w-screen text-[12vw] font-[700] tracking-tighter leading-[0.7] text-center uppercase whitespace-nowrap"
@@ -103,7 +103,7 @@ const HeroSection = () => {
           <div className="w-[60%] h-[1px] bg-white/30 mt-14" />
         </div>
 
-        {/* Features */}
+        
         <div className="w-full flex flex-col items-center pt-24 pb-26">
           <div className="grid grid-cols-1 md:grid-cols-3 w-full max-w-7xl text-center px-6 mb-1">
             {features.map((feature, index) => (
@@ -123,7 +123,7 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Buttons */}
+          
           <div className="flex flex-wrap justify-center gap-8">
             {heroButtons.map((button) => (
               <a

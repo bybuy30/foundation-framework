@@ -102,7 +102,7 @@ const WishlistPage = () => {
       <MainHeader />
 
       <main className="container mx-auto px-4 pt-28 pb-12">
-        {/* Navigation & Title */}
+        
         <div className="flex flex-col gap-4 mb-10">
           <button 
             onClick={() => navigate(-1)}
@@ -127,7 +127,7 @@ const WishlistPage = () => {
           </div>
         ) : (
           <div className="space-y-16">
-            {/* Products Section */}
+            
             {productItems.length > 0 && (
               <section>
                 <div className="flex items-center gap-3 mb-8 border-b pb-4">
@@ -149,7 +149,7 @@ const WishlistPage = () => {
               </section>
             )}
 
-            {/* Recipes Section */}
+            
             {recipeItems.length > 0 && (
               <section>
                 <div className="flex items-center gap-3 mb-8 border-b pb-4">
@@ -186,7 +186,7 @@ const WishlistPage = () => {
 const WishlistCard = ({ item, onRemove, navigate }: any) => {
   return (
     <div className="relative group">
-      {/* Remove Button */}
+      
       <Button
         variant="destructive"
         size="icon"

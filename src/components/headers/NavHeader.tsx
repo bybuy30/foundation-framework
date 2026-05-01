@@ -33,13 +33,13 @@ const NavHeader = () => {
       className={`header-nav sticky top-10 z-40 ${!isVisible ? "header-nav-hidden" : ""}`}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
+        
         <Link to="/" className="flex items-center gap-2">
           <Leaf className="w-8 h-8 text-primary" />
           <span className="text-xl font-bold tracking-tight">HYDRONEST</span>
         </Link>
 
-        {/* Desktop Navigation */}
+        
         <div className="hidden md:flex items-center gap-8">
           {mainNavLinks.map((link) => (
             <Link
@@ -52,14 +52,14 @@ const NavHeader = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
+        
         <div className="hidden md:block">
           <Button variant="default" size="sm">
             Get Quote
           </Button>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        
         <button
           className="md:hidden p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -73,7 +73,7 @@ const NavHeader = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-surface-elevated">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
@@ -98,3 +98,4 @@ const NavHeader = () => {
 };
 
 export default NavHeader;
+

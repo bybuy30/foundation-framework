@@ -15,14 +15,14 @@ const FeaturedDishes = () => {
     <section id="featured-dishes" className="py-24 bg-surface">
       <div className="container mx-auto px-4">
         
-        {/* Section Header */}
+        
         <div className="text-left mb-16">
           <h2 className="font-helvetica text-4xl md:text-5xl mb-6">
             Featured Recipes
           </h2>
         </div>
 
-        {/* Top Image - Removed mb to stay close to the box */}
+        
         <div className="w-full">
           <img
             src={stall}
@@ -31,10 +31,10 @@ const FeaturedDishes = () => {
           />
         </div>
 
-        {/* The Hollow Rectangular Container */}
+        
         <div className="relative border-4 border-[#FFD700] overflow-hidden flex flex-col md:flex-row items-start shadow-xl">
           
-          {/* Left Side: Image */}
+          
           <div className="w-full md:w-1/2">
             <img
               src={dishImage}
@@ -43,9 +43,9 @@ const FeaturedDishes = () => {
             />
           </div>
 
-          {/* Right Side: Text Content */}
+          
           <div className="w-full md:w-1/2 p-8 flex flex-col items-end text-right">
-            {/* Adjusted margin-bottom from 12rem to something more manageable */}
+            
             <h3 className="font-tangerine text-8xl font-bold tracking-wider mb-[12rem] leading-none">
               Featured Dish
             </h3>
@@ -65,7 +65,7 @@ const FeaturedDishes = () => {
               </p>
             </div>
 
-            {/* View Recipe Button */}
+            
             <button 
               onClick={handleViewRecipe}
               className="px-8 py-3 border-2 border-[#FFD700] text-white font-bold uppercase tracking-widest hover:bg-yellow-500 transition-all rounded-md shadow-md"

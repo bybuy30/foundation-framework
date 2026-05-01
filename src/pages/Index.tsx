@@ -21,10 +21,11 @@ const Index = () => {
         <ContactSection />
       </main>
 
-      {/* Footer */}
+      
       <FooterSection />
     </div>
   );
 };
 
 export default Index;
+

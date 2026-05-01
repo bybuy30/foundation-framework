@@ -4,7 +4,7 @@ const OurStorySection = () => {
   return (
     <section className="relative w-full min-h-screen flex flex-row overflow-hidden bg-muted/50">
       
-      {/* 1. Narrow Rectangle at the  left */}
+      
       <div className="w-12 md:w-20 bg-[#4F8F7A] flex-shrink-0 z-20" />
 
       <div className="flex-1 flex flex-col justify-between py-10 px-10 md:px-20 z-10 min-w-0">

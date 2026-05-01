@@ -25,7 +25,7 @@ const Footer = () => {
     <footer className="bg-surface border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Column */}
+          
           <div className="space-y-4">
             <a href="#hero" className="font-script text-2xl">
               Hydronest
@@ -35,7 +35,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          
           <div className="space-y-4">
             <h4 className="font-semibold">Quick Links</h4>
             <ul className="space-y-2">
@@ -52,7 +52,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          
           <div className="space-y-4">
             <h4 className="font-semibold">Contact</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
@@ -71,7 +71,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Links */}
+          
           <div className="space-y-4">
             <h4 className="font-semibold">Follow Us</h4>
             <div className="flex items-center gap-4">
@@ -99,7 +99,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
+        
         <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
           <p>© {currentYear} Hydronest. All rights reserved.</p>
         </div>
@@ -109,3 +109,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

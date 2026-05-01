@@ -60,7 +60,7 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({
               key={product.id}
               className="flex-shrink-0 w-64 select-none flex flex-col"
             >
-              {/* Image Section */}
+              
               <div
                 onClick={(e) => handleImageClick(e, product.id)}
                 className="bg-[#f3f3f3] w-full overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
@@ -76,7 +76,7 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({
                 />
               </div>
 
-              {/* Content Section */}
+              
               <div
                 onClick={() => handleCardBodyClick(product.id)}
                 className={cn(

@@ -8,7 +8,7 @@ const ProductsSection = () => {
   return (
     <section id="products" className="relative py-20 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
+        
         <div className="text-center mb-12">
           <span className="text-6xl text-primary font-medium uppercase tracking-wider">
             Our Products
@@ -19,7 +19,7 @@ const ProductsSection = () => {
           </p>
         </div>
 
-        {/* Products Grid with Filters */}
+        
         <ProductGrid />
         
       </div>
@@ -28,3 +28,4 @@ const ProductsSection = () => {
 };
 
 export default ProductsSection;
+

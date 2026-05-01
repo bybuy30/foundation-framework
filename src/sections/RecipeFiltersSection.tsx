@@ -29,7 +29,7 @@ const RecipeFiltersSection = () => {
     <section className="py-12 px-4 md:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
 
-        {/* Centered Intro Heading */}
+        
         <div className="text-center mb-12">
 <h1 className="font-Rubik text-4xl md:text-5xl mb-4 leading-tight">
   Fresh recipes to try
@@ -53,14 +53,14 @@ const RecipeFiltersSection = () => {
           </div>
 
         <p className="text-muted-foreground mb-8">
-          {/* Description about filtering */}
+          
         </p>
 
-        {/* Your vegetable grid goes here */}
+        
 
 
 
-        {/* Vegetable Filters Grid */}
+        
         <div className="flex gap-8 justify-center">
           {vegetables.map((vegetable) => (
             <div
@@ -68,14 +68,14 @@ const RecipeFiltersSection = () => {
               className="flex flex-col items-center cursor-pointer group"
               onClick={() => handleVegetableSelect(vegetable.id)}
             >
-              {/* Circular Vegetable Image */}
+              
               <div
                 className={`w-24 h-24 rounded-full mb-3 flex items-center justify-center transition-all duration-300 ${selectedVegetables.includes(vegetable.id)
                   ? "bg-primary/20 ring-2 ring-primary scale-110"
                   : "bg-muted group-hover:bg-muted/80"
                   }`}
               >
-                {/* Vegetable image would go here */}
+                
                 <div className="text-center">
                   <p className="text-xs text-muted-foreground">
                     {vegetable.name.split(" ")[0]}
@@ -83,7 +83,7 @@ const RecipeFiltersSection = () => {
                 </div>
               </div>
 
-              {/* Vegetable Name */}
+              
               <span
                 className={`text-sm font-medium transition-colors ${selectedVegetables.includes(vegetable.id)
                   ? "text-primary"
@@ -102,3 +102,4 @@ const RecipeFiltersSection = () => {
 };
 
 export default RecipeFiltersSection;
+

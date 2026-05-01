@@ -79,3 +79,4 @@ const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
 };
 
 export default RecipeCard;
+

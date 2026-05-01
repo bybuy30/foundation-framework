@@ -13,3 +13,4 @@ const CompanyOverviewSection = () => {
 };
 
 export default CompanyOverviewSection;
+

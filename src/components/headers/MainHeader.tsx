@@ -159,7 +159,7 @@ const MainHeader = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
-          {/* Brand Logo */}
+          
           <Link to="/">
             <img src={logo} alt="Logo" className="h-10 w-12" />
           </Link>
@@ -180,7 +180,7 @@ const MainHeader = () => {
                 aria-expanded={isSuggestionsOpen}
               />
 
-              {/* Suggestions dropdown */}
+              
               {isSuggestionsOpen && (
                 <ul className="absolute z-50 left-0 right-0 bg-[#43856d] border rounded mt-2 max-h-64 overflow-auto shadow-lg hover:text-black">
                   {suggestions.map((s, idx) => (
@@ -250,7 +250,7 @@ const MainHeader = () => {
           </div>
         </div>
 
-        {/* Navigation Links */}
+        
         <nav className="hidden md:flex items-center gap-8 h-10">
           {mainNavLinks.map((link) => (
             <Link

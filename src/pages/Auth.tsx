@@ -152,7 +152,7 @@ const Auth = () => {
       <div className="backdrop-blur-sm bg-white/30 rounded-xl shadow-lg max-w-md w-full p-8">
         <h1 className="text-2xl font-bold mb-4 text-center">HydroNest</h1>
 
-        {/* Toggle between Login & Signup */}
+        
         <div className="flex gap-2 mb-6">
           <button
             onClick={() => setIsLogin(true)}
@@ -170,7 +170,7 @@ const Auth = () => {
 
         {error && <div className="text-sm text-red-600 mb-4">{error}</div>}
 
-        {/* Form */}
+        
         <div className="space-y-4">
 
             <input
@@ -236,7 +236,7 @@ const Auth = () => {
             {loading ? "Please wait..." : isLogin ? "Login" : "Sign Up"}
           </button>
 
-          {/* Standard part of login - show a small note */}
+          
           <div className="text-xs text-muted-foreground text-center mt-2">
             By continuing you accept our Terms & Conditions and Privacy Policy.
           </div>
@@ -247,3 +247,4 @@ const Auth = () => {
 };
 
 export default Auth;
+
